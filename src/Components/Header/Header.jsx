@@ -1,7 +1,18 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import img1 from './images/model.png';
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Header = () => {
+ const{user,logOut}=useContext(AuthContext);
+ 
+const handelLogout=()=>{
+  logOut()
+  .then(()=>console.log('user created successfully'))
+  .catch(error=>{
+    console.log(error);
+  })
+}
   const navlinks = <>
   <li><NavLink to ="/home"> Home</NavLink></li>
    <li><NavLink to="/shop">Shop</NavLink></li>
@@ -41,21 +52,23 @@ const Header = () => {
      
      <div className="dropdown  menu-dropdown-toggle dropdown-end ">
        <label  className="btn btn-accent ">
-         <div className="w-60 ">
-         <button className="btn btn-link ">PLease Log_in and Register</button>
+         <div className="w-50 ">
+          {
+      
+                   user? <> 
+                   <span>{user.email}</span>
+                   <a onClick={handelLogout} className="btn btn-ghost">SingOut</a>
+            </>
+            :<Link to ="/login">
+              <button className="btn btn-sm">LOGIN</button>
+              
+              </Link> 
+     
+          }
+      
          </div>
        </label>
-       <ul className="menu menu-sm dropdown-content mt-3  p-2 shadow-sky-700  ">
-         <li>
-           <a className="justify-between">
-             Profile
-             <span className="badge">New</span>
-           </a>
-         </li>
-         <li><a>Register</a></li>
-         <li><a>Login</a></li>
-         <li><a>Logout</a></li>
-       </ul>
+       
      </div>
    </div>
 
