@@ -1,16 +1,26 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Login = () => {
+  const {singInUsers}= useState(AuthContext);
 
   const  handelformlogin = e =>{
+
+
    e.preventDefault();
    
     const email =e.target.email.value;
     const password=e.target.password.value;
-    console.log(name,email,password);
-
-
+    console.log(email,password);
+singInUsers(email,password)
+.then(result=>{
+  console.log(result.user);
+})   
+.catch(error=>{
+  console.log(error);
+})
   }
 
 

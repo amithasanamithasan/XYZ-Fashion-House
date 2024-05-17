@@ -13,7 +13,7 @@ const Register = () => {
 
 const handelformRegister=e=>{
 
- 
+ e.preventDefault();
     const name= e.target.name.value;
     const email= e.target.email.value;
     const password=e.target.password.value;
@@ -65,16 +65,18 @@ createUser(email,password)
           </label>
         </div>
         <button className="btn btn-primary ">Login</button>
-        <div className="text-center ">
+       
+        </form>
+         
+        </div>
+      
+      <div className="text-center ">
           <p className="font-light text-cyan-600 font-serif">
              You have already account? please got to Log in page</p>
-
-          <Link to="/login"> 
+      <Link to="/login"> 
           <button className="underline-offset-4  btn-link font-bold text-2xl">LOG-IN</button>
        
           </Link>
-        </div>
-      </form>
     </div>
   </div>
 </div>
