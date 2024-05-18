@@ -5,15 +5,6 @@ import Path from './Components/Path/Path';
 import Home from './Components/Home/Home';
 
 import Shop from './Components/Shop/Shop';
-
-
-
-
-
-
-import {
-  createBrowserRouter, RouterProvider,
-} from "react-router-dom";
 import Contact from './Components/Contact/Contact';
 
 import Login from './Components/Login/Login';
@@ -22,6 +13,11 @@ import AuthProvider from './Components/Provider/AuthProvider';
 import PrivetRoute from './Router/PrivetRoute';
 import Userprofile from './Components/UserProfile/Userprofile';
 import Dashboard from './Components/Dashboard/Dashboard';
+
+import {
+  createBrowserRouter, RouterProvider,
+} from "react-router-dom";
+
 
 
 
