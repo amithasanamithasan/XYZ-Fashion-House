@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Components/Provider/AuthProvider";
 import { Navigate } from "react-router-dom";
-
+import PropTypes from 'prop-types';
 
 
 const PrivetRoute = ({children}) => {
@@ -17,3 +17,6 @@ if(user){
 };
 
 export default PrivetRoute;
+PrivetRoute.propTypes = {
+    children: PropTypes.node
+}

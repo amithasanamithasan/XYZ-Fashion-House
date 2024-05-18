@@ -1,11 +1,13 @@
 
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 
 const Login = () => {
   const {singInUsers}= useContext(AuthContext);
+
+  const[success,setSuccess]=useState();
 
   const  handelformlogin = e =>{
 
@@ -18,6 +20,10 @@ const Login = () => {
    singInUsers(email,password)
    .then(result=>{
     console.log(result.user);
+    // reset email and password  login page
+    e.target.reset();
+    setSuccess( result.user);
+
     })   
 .catch(error=>{
   console.log(error);
@@ -54,6 +60,7 @@ const Login = () => {
           </label>
         </div>
         <button className="btn btn-primary ">Login</button>
+     
         <div className="text-center ">
           <p className="font-light text-cyan-600 font-serif"> Are you new users? please got to register page</p><Link to="/register"> 
           <button className="underline-offset-4  btn-link font-bold text-2xl"> register</button>
@@ -61,6 +68,9 @@ const Login = () => {
           </Link>
         </div>
       </form>
+      {
+        success && <p className="text-1xl font-serif text-lime-800 text-center" >USER LOG_IN SUCCESSFULLY</p>
+      }
     </div>
   </div>
 </div>
