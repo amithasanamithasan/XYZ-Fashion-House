@@ -2,7 +2,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useContext, useState } from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -11,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
 
-  const[success,setSuccess]=useState();
+  const [success, setSuccess] = useState();
   
   
 
@@ -30,7 +31,8 @@ const Login = () => {
     // reset email and password  login page
     e.target.reset();
     setSuccess( result.user);
-
+    alert('LOGIN SUCCESSFULLY')
+        toast("USER LOG_IN SUCCESSFULLY")
     // create login page got to shop page useNavigate
     navigate('/shop');
 
@@ -49,6 +51,8 @@ const Login = () => {
     console.log(error)
     })
    }
+
+
   // const handleGoogleLogin = async () => {
   //   setError(null);  // Clear previous error
 
@@ -93,6 +97,7 @@ const Login = () => {
           </label>
         </div>
         <button className="btn btn-primary ">Login</button>
+        <ToastContainer />
       </form>
       <div className="text-center ">
           <p className="font-light text-cyan-600 font-serif">
