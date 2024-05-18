@@ -19,6 +19,7 @@ import Contact from './Components/Contact/Contact';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import AuthProvider from './Components/Provider/AuthProvider';
+import PrivetRoute from './Router/PrivetRoute';
 
 
 
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/shop",
-        element:<Shop></Shop>,
+        element:<PrivetRoute><Shop></Shop></PrivetRoute>,
       },
       {
         path:"/contact",

@@ -5,8 +5,8 @@ import Header from "../Header/Header";
 const Path = () => {
     return (
         <div> 
-            <Header></Header>
-          
+            <Header>   </Header>
+
             <Outlet></Outlet>
         </div>
     );

@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Register = () => {
 
+const[success ,setSuccess]=useState();
 
   const {createUser}= useContext(AuthContext);
   // console.log(createUser);  
@@ -23,6 +24,7 @@ const handelformRegister=e=>{
 createUser(email,password)
  .then(result=>{
   console.log(result.user);
+  setSuccess(result.user);
  })
  .catch(error=>{
    console.log(error);
@@ -72,11 +74,14 @@ createUser(email,password)
       
       <div className="text-center ">
           <p className="font-light text-cyan-600 font-serif">
-             You have already account? please got to Log in page</p>
-      <Link to="/login"> 
+             You Have Already Account? Please Got To Log In Page</p>
+          <Link to="/login"> 
           <button className="underline-offset-4  btn-link font-bold text-2xl">LOG-IN</button>
-       
           </Link>
+
+          {
+            success && <p className="text-green-900 text-2xl font-serif">register successfully</p>
+          }
     </div>
   </div>
 </div>
