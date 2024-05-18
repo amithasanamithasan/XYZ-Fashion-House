@@ -66,7 +66,7 @@ createUser(email,password)
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
         </div>
-        <button className="btn btn-primary ">Login</button>
+        <button className="btn btn-primary ">Sing-in</button>
        
         </form>
          

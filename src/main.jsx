@@ -20,6 +20,8 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import AuthProvider from './Components/Provider/AuthProvider';
 import PrivetRoute from './Router/PrivetRoute';
+import Userprofile from './Components/UserProfile/Userprofile';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 
 
@@ -48,7 +50,15 @@ const router = createBrowserRouter([
     },
     {
       path:"/register",
-      element:<Register></Register>
+      element:<Register></Register>,
+    },
+    {
+      path:"/profile",
+      element:<PrivetRoute><Userprofile></Userprofile></PrivetRoute>,
+    },
+    {
+    path:"/dashboard",
+     element:<PrivetRoute><Dashboard></Dashboard></PrivetRoute>
     }
      
    

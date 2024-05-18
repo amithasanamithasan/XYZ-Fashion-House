@@ -19,7 +19,12 @@ const handelLogout=()=>{
    <li><NavLink to="/contact">Contact</NavLink></li>
    <li><NavLink to="/login">Login</NavLink></li>
    <li><NavLink to="/register">Register</NavLink></li>
+   {user&& <>
+     <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+   <li><NavLink to="/profile">User profile</NavLink></li>
+  </>}
   </>
+ 
 
 
    return (
@@ -39,7 +44,7 @@ const handelLogout=()=>{
 
      </div>
     <p className="btn btn-accent border-t-pink-600 normal-case 
-    text-xl md:text-1xl lg:text-4xl text-fuchsia-600">XYZ Fashion House</p>
+    text-xl md:text-1xl lg:text-2xl text-fuchsia-600">XYZ Fashion House</p>
    </div>
    <div className="navbar-center hidden lg:flex">
      <ul className="menu text-base menu-horizontal px-1">

@@ -1,13 +1,19 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useContext, useState } from "react";
 
 
+
 const Login = () => {
-  const {singInUsers}= useContext(AuthContext);
+  const {singInUsers,singInWithGoogle}= useContext(AuthContext);
+//useNavigate go to rediract shop =>or any pages
+  const navigate = useNavigate();
+
 
   const[success,setSuccess]=useState();
+  
+  
 
   const  handelformlogin = e =>{
 
@@ -16,6 +22,7 @@ const Login = () => {
    
     const email =e.target.email.value;
     const password=e.target.password.value;
+
     console.log(email,password);
    singInUsers(email,password)
    .then(result=>{
@@ -24,11 +31,37 @@ const Login = () => {
     e.target.reset();
     setSuccess( result.user);
 
+    // create login page got to shop page useNavigate
+    navigate('/shop');
+
     })   
 .catch(error=>{
   console.log(error);
 })
-  }
+   
+}
+  const  handelGoogle=()=>{
+    singInWithGoogle()
+    .then(result=>{
+      console.log(result.user)
+    })
+     .catch(error=>{
+    console.log(error)
+    })
+   }
+  // const handleGoogleLogin = async () => {
+  //   setError(null);  // Clear previous error
+
+  //   try {
+  //     const result = await singinWithgoogle();
+  //     console.log(result.user);
+  //     setSuccess("User logged in successfully");
+  //     navigate('/shop');
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     setError(error.message);
+  //   }
+
 
 
     return (
@@ -60,17 +93,21 @@ const Login = () => {
           </label>
         </div>
         <button className="btn btn-primary ">Login</button>
-     
-        <div className="text-center ">
-          <p className="font-light text-cyan-600 font-serif"> Are you new users? please got to register page</p><Link to="/register"> 
+      </form>
+      <div className="text-center ">
+          <p className="font-light text-cyan-600 font-serif">
+             Are you new users? please got to register page</p>
+          <Link to="/register"> 
           <button className="underline-offset-4  btn-link font-bold text-2xl"> register</button>
        
           </Link>
+          <p ><button onClick={handelGoogle} className="btn btn-ghost">Google</button></p>
         </div>
-      </form>
+       
       {
         success && <p className="text-1xl font-serif text-lime-800 text-center" >USER LOG_IN SUCCESSFULLY</p>
       }
+       
     </div>
   </div>
 </div>
